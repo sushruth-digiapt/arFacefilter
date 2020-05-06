@@ -1,0 +1,73 @@
+.flex-container {
+
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;    
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  /*flex-direction: row | row-reverse | column | column-reverse;*/
+  flex-flow: column nowrap;
+    /* justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+    */
+  justify-content: center;  
+  /*
+  align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
+  */
+  align-items: stretch;
+}
+
+.flex-item {
+  padding: 0px;
+  width: 100%;
+  /*height: 100px;*/
+  margin-top: 7px;
+  margin-bottom: 7px;
+  /*line-height: 100px;*/
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.flex-item-mainvideo {
+    background: tomato;
+    order: 1;
+    flex-grow: 1;
+}
+.flex-item-preview {
+    background: orange;
+    order: 2;
+    flex-basis: 15%;
+}
+.flex-item-controls {
+    background: pink;
+    order: 3;
+    flex-basis: 10%;
+}
+.flex-item-mainvideo-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: column nowrap;    
+  justify-content: center;  
+  align-items: center;
+}
+
+.flex-item-mainvideo-container-item {
+  background: cadetblue;
+    order: 1;
+    height: 100px
+}

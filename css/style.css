@@ -1,0 +1,52 @@
+a {color: #eee; text-decoration: none}
+a:hover {color: blue;}
+body {overflow: auto; overflow-y: auto;
+  background-color: white;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: contain;
+  margin: 0px;}
+
+#jeeFaceFilterCanvas {
+  position: absolute; 
+  /* max-height: 50; */
+  /* max-width: 50; */
+  /* left: 50%; */
+  /* top: 50%;  */
+  width: 42%;
+    height: 84%;
+  transform: translate(-50%, 0%) rotateY(180deg);
+} 
+
+@media (max-width: 1100px) {
+  /* #jeeFaceFilterCanvas {
+    right: 0px;
+    top: 60px;
+    transform: rotateY(180deg);
+  } */
+  #jeeFaceFilterCanvas {
+    height: 85%;
+    width: 95%;
+    }
+}
+
+/* 
+
+{
+  'videoElement' //not set by default. <video> element used
+   //If you specify this parameter,
+   //all other settings will be useless
+   //it means that you fully handle the video aspect
+
+  'deviceId'            //not set by default
+  'facingMode': 'user', //to use the rear camera, set to 'environment'
+
+  'idealWidth': 800,  //ideal video width in pixels
+  'idealHeight': 600, //ideal video height in pixels
+  'minWidth': 480,    //min video width in pixels
+  'maxWidth': 1280,   //max video width in pixels
+  'minHeight': 480,   //min video height in pixels
+  'maxHeight': 1280,  //max video height in pixels,
+  'rotate': 0,        //rotation in degrees possible values: 0,90,-90,180
+  'flipX': false      //if we should flip horizontally the video. Default: false
+}, */

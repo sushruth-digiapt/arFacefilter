@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="lib/deepar.js"></script>
+    <script language="javascript">
+      ScrollRate = 60;
+      function scrollDiv_initRate(){
+        let value=document.getElementById('scroll').value
+        console.log("value",value)
+          ScrollRate=value
+      }
+      function scrollDiv_init() {
+        DivElmnt = document.getElementById('MyDivName');
+        ReachedMaxScroll = false;
+        
+        DivElmnt.scrollTop = 0;
+        PreviousScrollTop  = 0;
+        
+        // ScrollInterval = setInterval('scrollDiv()', ScrollRate); 
+        //  this is for start with scrolling
+      }
+      
+      function scrollDiv() {
+        
+        if (!ReachedMaxScroll) {
+          DivElmnt.scrollTop = PreviousScrollTop;
+          PreviousScrollTop++;
+          
+          ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
+        }
+        else {
+          ReachedMaxScroll = (DivElmnt.scrollTop == 0)?false:true;
+          
+          DivElmnt.scrollTop = PreviousScrollTop;
+        }
+      }
+      
+      function pauseDiv() {
+        clearInterval(ScrollInterval);
+          buttonResume=true
+      }
+      
+      function resumeDiv() {
+        PreviousScrollTop = DivElmnt.scrollTop;
+          buttonResume=false
+        ScrollInterval    = setInterval('scrollDiv()', ScrollRate);
+      }
+      function restart(){
+        DivElmnt = document.getElementById('MyDivName');
+        ReachedMaxScroll = false;
+        DivElmnt.scrollTop = 0;
+        PreviousScrollTop  = 0;
+      }
+      $(document).ready(function(){
+          $("#resume").hide();
+      
+        $("#push").click(function(){
+        $("#push").hide();
+        $("#resume").show();
+      
+        });
+        $("#resume").click(function(){
+          $("#push").show();
+          $("#resume").hide();
+      
+        });
+      });
+      </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>    
+    <title>JEELIZ FACE FILTER: THREE.JS CUBE DEMO</title>
+    
+    <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
+    <script src="/req/dist/jeelizFaceFilter.js"></script>
+
+    <!-- INCLUDE THREE.JS -->
+    <script src="/req/lib/three.js"></script>
+
+    <!-- INCLUDE JEELIZRESIZER -->
+    <script src="/req/helpers/JeelizResizer.js"></script>
+
+    <!-- INCLUDE JEELIZTHREEJSHELPER -->
+    <script src="/req/helpers/JeelizThreejsHelper.js"></script>
+
+    <!-- INCLUDE SCRIPT -->
+    <script src="/scripts/script.js"></script>  
+
+    <!-- IMPORT HELPER METHODS -->
+    <script src='/req/helpers/addDragEventListener.js'></script>
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+   <style>
+     .row{
+       margin-left: 0px;
+       margin-right: 0px;
+     }
+     .input-container {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      
+      .icon {
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+        min-width: 50px;
+        text-align: center;
+      }
+      
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+      }
+      
+      .input-field:focus {
+        border: 2px solid dodgerblue;
+      }
+      
+      /* Set a style for the submit button */
+      .button {
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100px;
+        opacity: 1;
+      }
+      
+      .button:hover {
+        opacity: 1;
+      }
+      .card{
+      background: black;
+          color: white;
+          font-size: larger;
+          height: fit-content;
+          width: 87.5%;
+          box-shadow: 0px 5px 10px #888888;
+          margin:auto;
+      }
+      input[type='number']{
+        height: auto;
+          padding: 2px 0px;
+          font-size: inherit;
+          color:black
+      }
+      .textPadd{
+        overflow:hidden;
+        width:100%;
+        height:30px;
+        font-size: 24px;
+        padding-left:1%;
+        padding-right:1%;
+        text-align:justify;
+      }
+      @media (max-width: 1100px) {
+        .card{
+          width: 99.5%;
+        }
+        .button{
+          width: 80px;
+        }
+      }
+.flex-container {
+
+position: absolute;
+top: 0; right: 0; bottom: 0; left: 0;    
+padding: 0;
+margin: 0;
+list-style: none;
+
+-ms-box-orient: horizontal;
+display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -moz-flex;
+display: -webkit-flex;
+display: flex;
+flex-wrap: nowrap;
+/*flex-direction: row | row-reverse | column | column-reverse;*/
+flex-flow: column nowrap;
+/* justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+*/
+justify-content: center;  
+/*
+align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
+*/
+align-items: stretch;
+}
+
+.flex-item {
+padding: 0px;
+/* width: 100%; */
+/*height: 100px;*/
+/* margin-top: 7px;
+margin-bottom: 7px; */
+/*line-height: 100px;*/
+color: white;
+font-weight: bold;
+font-size: 2em;
+text-align: center;
+/* border: 1px solid black; */
+}
+
+.flex-item-mainvideo {
+/* background: tomato; */
+order: 1;
+flex-grow: 1;
+}
+.flex-item-preview {
+/* background: orange; */
+order: 2;
+flex-basis: 15%;
+}
+.flex-item-controls {
+background: pink;
+order: 3;
+flex-basis: 10%;
+}
+
+   </style>
+  </head>
+  
+  <body onLoad="scrollDiv_init();main()" >
+
+    <!-- <ul class="flex-container nowrap">
+      <li class="flex-item flex-item-mainvideo">
+        <canvas  id='jeeFaceFilterCanvas'></canvas>
+
+      </li>
+      <li class="flex-item flex-item-preview">2</li>
+      <li class="flex-item flex-item-controls">3</li>
+  </ul>     -->
+  <ul class="flex-container nowrap">
+    <li class="flex-item flex-item-mainvideo">
+      <canvas  id='jeeFaceFilterCanvas'></canvas>
+
+    </li>
+    <li class="flex-item flex-item-preview">
+      <div class="row">
+        <div class="col-lg-3 ">
+        </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+            <div class="card">
+            <div class="row" style="padding:1%;">
+              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" >
+                <button class="button" id='push' type="submit" onclick="resumeDiv()">
+                  <i class="fa fa-play icon"></i>
+                </button>
+              <button class="button"id='resume'type="submit" onclick="pauseDiv()">
+                  <i class="fa fa-pause icon"></i>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+              <div class="input-container">
+                <i class="fa fa-file-text-o	icon"></i>
+                <input class="input-field" type="number"id='scroll'
+                onfocusout="scrollDiv_initRate()" placeholder="Scroll rate" name="usrnm">
+              </div>
+            
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+              <button class="button" id='push' type="submit" onclick=restart()>
+                <i class="fa fa-refresh icon"></i>
+              </button>
+            </div>
+            </div>
+            <div id="MyDivName" contentEditable="true" class="textPadd">
+              Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the 
+              proposition that all men are created equal.
+              Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. 
+              We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for 
+              those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.
+              But, in a larger sense, we can not dedicate -- we can not consecrate -- we can not hallow -- this ground. The brave men, 
+              living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note,
+              nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated 
+              here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated
+                to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they 
+                gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, 
+                under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.   
+            </div>
+          </div>        
+        </div>
+        <div class="col-lg-3">
+        </div>
+      </div>
+    </li>
+</ul>    
+  </body>
+</html>
+ 
+ 
