@@ -107,11 +107,10 @@
       }
       
       .icon {
-        padding: 10px;
         background: dodgerblue;
         color: white;
-        min-width: 50px;
         text-align: center;
+        font-size:30px;
       }
       
       .input-field {
@@ -250,37 +249,23 @@ flex-basis: 10%;
         </div>
           <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
             <div class="card">
-            <div class="row" style="padding:1%;">
-              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" >
-                <button class="button" id='push' type="submit" onclick="resumeDiv()">
-                  <i class="fa fa-play icon"></i>
+            <div class="row" style="padding-top:1%;">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" >
+                <button class="button"  type="submit" onclick="scrolldown()">
+                  <i class="fa fa-caret-square-o-down icon"></i>
                 </button>
-              <button class="button"id='resume'type="submit" onclick="pauseDiv()">
-                  <i class="fa fa-pause icon"></i>
+              <button class="button"type="submit" onclick="scrollup()">
+                  <i class="fa fa-caret-square-o-up icon"></i>
+                </button>
+                <button class="button" type="submit" onclick=restart()>
+                  <i class="fa fa-refresh icon"></i>
                 </button>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
-              <div class="input-container">
-                <i class="fa fa-file-text-o	icon"></i>
-                <input class="input-field" type="number"id='scroll'
-                onfocusout="scrollDiv_initRate()" placeholder="Scroll rate" name="usrnm">
-              </div>
-            
-              </div>
-              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
-              <button class="button" id='push' type="submit" onclick=restart()>
-                <i class="fa fa-refresh icon"></i>
-              </button>
             </div>
-            </div>
-            <div id="MyDivName" contentEditable="true" class="textPadd">
-              Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the 
-              proposition that all men are created equal.
-              Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. 
-              We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for 
-              those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.
-              But, in a larger sense, we can not dedicate -- we can not consecrate -- we can not hallow -- this ground. The brave men, 
-              living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note,
+            <div id="MyDivName" contentEditable="true" class="text textPadd">
+              Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure.
+              We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.But, in a larger sense, we can not dedicate -- we can not consecrate -- we can not hallow -- this ground. 
+              The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note,
               nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated 
               here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated
                 to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they 
@@ -293,7 +278,32 @@ flex-basis: 10%;
         </div>
       </div>
     </li>
-</ul>    
+</ul>
+<script>
+  var el = document.getElementsByClassName("text")[0];
+  console.log("el" ,el)
+  
+  var startingscroll = 2;
+  if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+       startingscroll = 3;
+  }
+  
+  el.scrollTop = startingscroll;
+  
+  function scrolldown(){
+    el.scrollTop += 37;
+    if(el.scrollTop == 399){
+      el.scrollTop = 398;
+    }
+  }
+  
+  function scrollup(){
+    el.scrollTop -= 37;
+    if(el.scrollTop == 0){
+      el.scrollTop = startingscroll;
+    }
+  }
+  </script>    
   </body>
 </html>
  
